@@ -96,7 +96,7 @@ public class BankRecords extends Client {
 			idx++;
 		}
 		
-		printData();  // Call function to print objects held in memory
+		// printData();  // Call function to print objects held in memory
 	} // End processData()
 	
 	@Override
