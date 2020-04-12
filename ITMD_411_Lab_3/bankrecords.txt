@@ -1,0 +1,3 @@
+The Results of Data Analysis
+Average income for Females: $28646.318233333328
+Average income for Males: $27225.827199999996

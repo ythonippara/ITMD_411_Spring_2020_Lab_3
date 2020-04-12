@@ -30,26 +30,28 @@ public class Records extends BankRecords {
 		// set up needed variables to gather counts & income by sex 
 		// to determine average income by sex
 		
-		int maleCt = 0, femCt = 0;
-		double maleInc =0, femInc = 0;
+		int maleCount = 0, femaleCount = 0;
+		double maleIncome =0, femaleIncome = 0;
 		
 		for (int i = 0; i < robjs.length; i++)
 			if (robjs[i].getSex().equals("FEMALE")) {
-				++femCt;
-				femInc += robjs[i].getIncome();
+				++femaleCount;
+				femaleIncome += robjs[i].getIncome();
 			}  
-			else {
-				
-				//...
+			else if (robjs[i].getSex().equals("MALE")) {
+				++maleCount;
+				maleIncome += robjs[i].getIncome();
 			}
 			 
 		// display resulting averages to console and to file
 		 
-		System.out.printf(" ... ");
+		System.out.printf("Average income for Females: $%.2f", (femaleIncome/femaleCount));
+		System.out.printf("\nAverage income for Males: $%.2f",(maleIncome/maleCount));
 
 		try {
-			fw.write("Avg inc. for Females: $" + (femInc/femCt) );
-			fw.write("...");
+			fw.write("The Results of Data Analysis");
+			fw.write("\nAverage income for Females: $" + (femaleIncome/femaleCount));
+			fw.write("\nAverage income for Males: $" + (maleIncome/maleCount));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
