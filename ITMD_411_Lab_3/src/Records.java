@@ -44,7 +44,6 @@ public class Records extends BankRecords {
 			}
 			 
 		// display resulting averages to console and to file
-		 
 		System.out.printf("Average income for Females: $%.2f", (femaleIncome/femaleCount));
 		System.out.printf("\nAverage income for Males: $%.2f",(maleIncome/maleCount));
 
