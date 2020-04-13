@@ -23,7 +23,7 @@ public class Records extends BankRecords {
 		}
 	}
 
-	public static void AverageComparator() {
+	public static void AverageStats() {
 		
 		Arrays.sort(robjs, new ComparatorBySex());
 
@@ -44,64 +44,98 @@ public class Records extends BankRecords {
 			}
 			 
 		// display resulting averages to console and to file
-		System.out.printf("Average income for Females: $%.2f", (femaleIncome/femaleCount));
-		System.out.printf("\nAverage income for Males: $%.2f",(maleIncome/maleCount));
+		System.out.print("Data Analysis Results:\n");
+		System.out.println();
+		System.out.printf("Average income for Females -> $%.2f", (femaleIncome/femaleCount));
+		System.out.printf("\nAverage income for Males -> $%.2f", (maleIncome/maleCount));
+		System.out.println();
 
 		try {
-			fw.write("The Results of Data Analysis\n");
-			fw.write("\nAverage income for Females: $" + (femaleIncome/femaleCount));
-			fw.write("\nAverage income for Males: $" + (maleIncome/maleCount));
+			fw.write("Data Analysis Results:\n");
+			fw.write("\nAverage income for Females -> " + String.format("$%.2f", (femaleIncome/femaleCount)));
+			fw.write("\nAverage income for Males -> " + String.format("$%.2f", (maleIncome/maleCount)) + "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	} // End AverageComparator()
+	} // End AverageStats()
 	
-	public static void FemalesComparator() {
+	public static void StatsFemales() {
 		
-		Arrays.sort(robjs, new ComparatorBySex());
+		// Call FemaleStatsComparator
+		Arrays.sort(robjs, new FemaleStatsComparator());
 
-		// set up needed variables to gather counts & income by sex 
-		// to determine average income by sex
-		
+		// set up needed variables to gather counts 
 		int totalFemaleCount = 0;
-		int femaleCount = 0;
-		int mortgage, savingsAcct;
 		
+		// Loop through robjs[] and gather results
 		for (int i = 0; i < robjs.length; i++)
-			if (robjs[i].getSex().contentEquals("FEMALE")) {
+			if (robjs[i].getSex().equals("FEMALE") && robjs[i].getMortgage().equals("YES") 
+					&& robjs[i].getSavingsAcct().equals("YES")) {
 				++totalFemaleCount;
-				/**for (int j = 0; j < robjs.length; j++)
-					if (robjs[i].getMortgage().equals("YES") && robjs[i].getSave_acct().equals("YES"))
-						++femaleCount;**/
 		}
 		
-		// display resulting averages to console and to file
-				System.out.printf("\nNumber of Females with mortgage and savings accounts: %d", totalFemaleCount);
+		// Display the result to console
+		System.out.printf("\nThe number of Females with mortgage and savings accounts -> %d", totalFemaleCount);
+		System.out.println();
 		
-	} // End FemalesComparator()
+		// Write the results to the file
+		try {
+			fw.write("\nThe number of Females with mortgage and savings accounts -> " + totalFemaleCount + "\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	} // End StatsFemale()
 	
-	/**public static void MalesComparator() {
+	public static void StatsMales() {
 		
-		Arrays.sort(robjs, new SexComparator());
+		// Call MaleStatsComparator
+		Arrays.sort(robjs, new MaleStatsComparator());
 
-		// set up needed variables to gather counts & income by sex 
-		// to determine average income by sex
+		// set up needed variables to gather counts
+		int innerCityMaleCount = 0, ruralMaleCount = 0, suburbanMaleCount = 0, townMaleCount = 0 ;
 		
-		int totalMaleCount = 0;
-		int maleCount = 0;
-		int mortgage, savingsAcct;
-		
+		// Loop through robjs[] and gather results
 		for (int i = 0; i < robjs.length; i++)
-			if (robjs[i].getSex().equals("MALE")) {
-				++totalMaleCount;
-				for (int j = 0; j < robjs.length; j++)
-					if (robjs[i].getMortgage().equals("YES") && robjs[i].getSave_acct().equals("YES"))
-						++maleCount;
-		} 
+			if (robjs[i].getSex().equals("MALE") && robjs[i].getRegion().equalsIgnoreCase("inner_city") 
+					&& robjs[i].getCar().equals("YES") && robjs[i].getChildren() == 1) {
+				++innerCityMaleCount;
+			} 
 		
-		// display resulting averages to console and to file
-		System.out.printf("\nNumber of Females with Mortgage and Savings account: %d", totalFemaleCount); } **/ // End MalesComparator()
+			else if (robjs[i].getSex().equals("MALE") && robjs[i].getRegion().equalsIgnoreCase("rural") 
+					&& robjs[i].getCar().equals("YES") && robjs[i].getChildren() == 1) {
+				++ruralMaleCount;
+			} 
 
+			else if (robjs[i].getSex().equals("MALE") && robjs[i].getRegion().equalsIgnoreCase("suburban") 
+					&& robjs[i].getCar().equals("YES") && robjs[i].getChildren() == 1) {
+				++suburbanMaleCount;
+			} 
+			else if (robjs[i].getSex().equals("MALE") && robjs[i].getRegion().equalsIgnoreCase("town") 
+					&& robjs[i].getCar().equals("YES") && robjs[i].getChildren() == 1) {
+				++townMaleCount;
+			} 
+		
+		// Display the results to console
+		System.out.print("\nThe number of Males with a car and one child:");
+		System.out.printf("\n- inner city region -> %d", innerCityMaleCount);
+		System.out.printf("\n- rural region -> %d", ruralMaleCount); 
+		System.out.printf("\n- suburban region -> %d", suburbanMaleCount); 
+		System.out.printf("\n- town region -> %d", townMaleCount);
+		
+		// Write the results to the file
+		try {
+			fw.write("\nThe number of Males with a car and one child:");
+			fw.write("\n- inner city region -> " + innerCityMaleCount);
+			fw.write("\n- rural region -> " + ruralMaleCount);
+			fw.write("\n- suburban region -> " + suburbanMaleCount);
+			fw.write("\n- town region -> " + townMaleCount);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	} // End StatsMales()
+	
 	public static void main(String[] args) {
 		
 		// Create Records object
@@ -109,9 +143,9 @@ public class Records extends BankRecords {
 		br.readData();
 
 		// Call functions to perform analytics
-		AverageComparator(); // Analyze average income per region
-		FemalesComparator(); // Number of female mortgage and savings accounts 
-		//MalesComparator(); // Counts of males with a car & 1 child per location
+		AverageStats(); // Analyze average income by sex
+		StatsFemales(); // Display the number of females with mortgage and savings accounts 
+		StatsMales(); // Display the number of males per region with a car and one child 
 
 		// *** close out file object ***//
 

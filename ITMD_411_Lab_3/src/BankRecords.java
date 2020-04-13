@@ -29,18 +29,18 @@ public class BankRecords extends Client {
 	static ArrayList<List<String>> array = new ArrayList<>();
 	
 	// Instance fields
-	private String id;
-	private int age;
-	private String sex;
-	private String region;
-	private double income;
-	private String married;
-	private int children;
-	private String car;
-	private String savingsAcct;
-	private String currentAcct;
-	private String mortgage;
-	private String pep;
+	private String id; 				// index 0 column 1
+	private int age; 				// index 1 column 2
+	private String sex; 			// index 2 column 3
+	private String region; 			// index 3 column 4
+	private double income; 			// index 4 column 5
+	private String married; 		// index 5 column 6
+	private int children; 			// index 6 column 7
+	private String car; 			// index 7 column 8
+	private String savingsAcct; 	// index 8 column 9
+	private String currentAcct; 	// index 9 column 10
+	private String mortgage; 		// index 10 column 11
+	private String pep; 			// index 11 column 12
 	
 	@Override
 	public void readData() {
@@ -92,6 +92,9 @@ public class BankRecords extends Client {
 			robjs[idx].setSex(rowData.get(2)); // Get 3rd column
 			robjs[idx].setRegion(rowData.get(3)); // Get 4th column
 			robjs[idx].setIncome(Double.parseDouble(rowData.get(4))); // Get 5th column
+			robjs[idx].setChildren(Integer.parseInt(rowData.get(6))); // Get 7th column
+			robjs[idx].setCar(rowData.get(7)); // Get 8th column
+			robjs[idx].setSavingsAcct(rowData.get(8)); // Get 9th column
 			robjs[idx].setMortgage(rowData.get(10)); // Get 11th column
 			idx++;
 		}

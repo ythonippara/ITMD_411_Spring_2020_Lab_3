@@ -1,4 +1,12 @@
-The Results of Data Analysis
+Data Analysis Results:
 
-Average income for Females: $28646.318233333328
-Average income for Males: $27225.827199999996
+Average income for Females -> $28646.32
+Average income for Males -> $27225.83
+
+The number of Females with mortgage and savings accounts -> 71
+
+The number of Males with a car and one child:
+- inner city region -> 15
+- rural region -> 9
+- suburban region -> 3
+- town region -> 7
