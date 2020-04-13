@@ -8,13 +8,15 @@
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class Records extends BankRecords {
 	
 	//create formatted object to write output directly to console & file
 	static FileWriter fw = null;
-	
+	 
 	public Records() {
 		try {
 			fw = new FileWriter("bankrecords.txt");
@@ -91,6 +93,10 @@ public class Records extends BankRecords {
 		
 		// Call MaleStatsComparator
 		Arrays.sort(robjs, new MaleStatsComparator());
+		
+		// Set up Date object
+		Date dateNow = new Date( );
+		SimpleDateFormat dateFormat = new SimpleDateFormat ("E MM.dd.yyyy 'at' hh:mm:ss a zzz");
 
 		// set up needed variables to gather counts
 		int innerCityMaleCount = 0, ruralMaleCount = 0, suburbanMaleCount = 0, townMaleCount = 0 ;
@@ -129,7 +135,9 @@ public class Records extends BankRecords {
 			fw.write("\n- inner city region -> " + innerCityMaleCount);
 			fw.write("\n- rural region -> " + ruralMaleCount);
 			fw.write("\n- suburban region -> " + suburbanMaleCount);
-			fw.write("\n- town region -> " + townMaleCount);
+			fw.write("\n- town region -> " + townMaleCount + "\n");
+			fw.write("\n@author Yulia Thonippara");
+			fw.write("\nCurrent Date: " + dateFormat.format(dateNow));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -141,7 +149,7 @@ public class Records extends BankRecords {
 		// Create Records object
 		Records br = new Records();
 		br.readData();
-
+		
 		// Call functions to perform analytics
 		AverageStats(); // Analyze average income by sex
 		StatsFemales(); // Display the number of females with mortgage and savings accounts 

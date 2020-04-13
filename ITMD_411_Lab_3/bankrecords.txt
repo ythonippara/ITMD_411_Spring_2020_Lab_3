@@ -10,3 +10,6 @@ The number of Males with a car and one child:
 - rural region -> 9
 - suburban region -> 3
 - town region -> 7
+
+@author Yulia Thonippara
+Current Date: Mon 04.13.2020 at 07:00:45 AM CDT
