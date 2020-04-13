@@ -37,8 +37,8 @@ public class BankRecords extends Client {
 	private String married;
 	private int children;
 	private String car;
-	private String save_acct;
-	private String current_acct;
+	private String savingsAcct;
+	private String currentAcct;
 	private String mortgage;
 	private String pep;
 	
@@ -196,20 +196,20 @@ public class BankRecords extends Client {
 		this.car = car;
 	}
 
-	public String getSave_acct() {
-		return save_acct;
+	public String getSavingsAcct() {
+		return savingsAcct;
 	}
 
-	public void setSave_acct(String save_acct) {
-		this.save_acct = save_acct;
+	public void setSavingsAcct(String savingsAcct) {
+		this.savingsAcct = savingsAcct;
 	}
 
-	public String getCurrent_acct() {
-		return current_acct;
+	public String getCurrentAcct() {
+		return currentAcct;
 	}
 
-	public void setCurrent_acct(String current_acct) {
-		this.current_acct = current_acct;
+	public void setCurrentAcct(String currentAcct) {
+		this.currentAcct = currentAcct;
 	}
 
 	public String getMortgage() {
